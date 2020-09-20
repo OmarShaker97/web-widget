@@ -41,6 +41,8 @@
 
   /******** Our main function ********/
   function main() {
+    // var searchByName = ExampleWidgetContainer.getAttribute("search-by-name");
+
     jQuery(document).ready(function ($) {
       /******* Load CSS *******/
       var css_link = $("<link>", {
@@ -51,11 +53,9 @@
       css_link.appendTo("head");
 
       /******* Load HTML *******/
-      var jsonp_url = "data.py?callback=?";
+      var jsonp_url = "http://localhost/cgi-bin/data.py?callback=?";
       $.getJSON(jsonp_url, function (data) {
-        $("#example-widget-container").html(
-          "This data comes from another server: " + data.html
-        );
+        $("#ExampleWidgetContainer").html(data.html + data.name);
       });
     });
   }
